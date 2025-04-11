@@ -3,6 +3,9 @@
   "module": "index.ts",
   "type": "module",
   "private": true,
+  "scripts": {
+    "start": "bun run index.ts"
+  },
   "devDependencies": {
     "@types/bun": "latest",
     "@types/node": "^22.14.1",
@@ -15,6 +18,7 @@
     "@feathersjs/express": "^5.0.33",
     "@feathersjs/feathers": "^5.0.33",
     "@feathersjs/socketio": "^5.0.33",
+    "@feathersjs/transport-commons": "^5.0.33",
     "moment": "^2.30.1"
   }
 }

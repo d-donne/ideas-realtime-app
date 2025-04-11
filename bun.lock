@@ -7,6 +7,7 @@
         "@feathersjs/express": "^5.0.33",
         "@feathersjs/feathers": "^5.0.33",
         "@feathersjs/socketio": "^5.0.33",
+        "@feathersjs/transport-commons": "^5.0.33",
         "moment": "^2.30.1",
       },
       "devDependencies": {
