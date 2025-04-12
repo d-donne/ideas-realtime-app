@@ -1,5 +1,5 @@
 import { feathers, type RealTimeConnection } from "@feathersjs/feathers";
-import express, { json, rest } from "@feathersjs/express";
+import express, { cors, json, rest } from "@feathersjs/express";
 import socketio from "@feathersjs/socketio";
 import { channels } from "@feathersjs/transport-commons";
 import { IdeaService } from "./idea-service";
@@ -11,8 +11,23 @@ const app = express(feathers())
 // parse JSON
 app.use(json())
 
+app.use(cors({
+    origin: 'http://localhost:5500',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Authorization'], 
+    credentials: true ,
+    
+}));
+
 // enable Socket.io support
-app.configure(socketio())
+app.configure(socketio({
+    cors: {
+        origin: 'http://localhost:5500',
+        methods: ['GET', 'POST'],
+        allowedHeaders: ['Authorization'], 
+        credentials: true ,
+    }
+}))
 
 // enable REST services
 app.configure(rest())
@@ -39,8 +54,3 @@ app.listen(PORT).then((server) => {
   })
 })
 
-app.service('ideas').create({
-    text: 'Build a realtime app',
-    tech: 'NodeJS',
-    viewer: 'Jane Stephenson',
-})
